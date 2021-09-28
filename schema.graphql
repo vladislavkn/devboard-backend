@@ -33,3 +33,11 @@ type Tag {
   backgroundColor: String!
   id: ID!
 }
+
+type Query {
+  tags(limit: Int!): [Tag!]!
+  taggedPosts(tagIds: [ID!]!): [PostPreview!]!
+  lastPosts: [PostPreview!]!
+  currentPost(postId: ID!): Post
+  postComments(postId: ID!): [Comment!]
+}
