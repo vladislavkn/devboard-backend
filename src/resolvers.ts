@@ -6,6 +6,9 @@ const resolvers: Resolvers<Context> = {
     tags: (_, args, { dataSources }) => {
       return dataSources.tagsAPI.getTags(args.page, args.per_page);
     },
+    postComments: (_, args, { dataSources }) => {
+      return dataSources.commentsAPI.getCommentsByPostId(args.postId);
+    },
   },
 };
 

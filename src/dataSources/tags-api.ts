@@ -1,15 +1,9 @@
 import { Tag } from "@/graphql-types";
 import { getEnvOrFail } from "../utils";
 import { RESTDataSource } from "apollo-datasource-rest";
+import { ITagsAPI, TagDTO } from "@/types";
 
-type TagDTO = {
-  id: number;
-  name: string;
-  bg_color_hex: string;
-  text_color_hex: string;
-};
-
-export default class TagsAPI extends RESTDataSource {
+export default class TagsAPI extends RESTDataSource implements ITagsAPI {
   constructor() {
     super();
     this.baseURL = getEnvOrFail("API_URL") as string;

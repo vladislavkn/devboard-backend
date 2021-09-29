@@ -17,7 +17,6 @@ export type Comment = {
   __typename?: 'Comment';
   author: User;
   body: Scalars['String'];
-  originalURL: Scalars['String'];
   readableDate: Scalars['String'];
 };
 
@@ -75,7 +74,6 @@ export type Tag = {
 export type User = {
   __typename?: 'User';
   avatarURL: Scalars['String'];
-  id: Scalars['ID'];
   name: Scalars['String'];
 };
 
@@ -175,7 +173,6 @@ export type ResolversParentTypes = {
 export type CommentResolvers<ContextType = any, ParentType extends ResolversParentTypes['Comment'] = ResolversParentTypes['Comment']> = {
   author?: Resolver<ResolversTypes['User'], ParentType, ContextType>;
   body?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  originalURL?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   readableDate?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -211,7 +208,6 @@ export type TagResolvers<ContextType = any, ParentType extends ResolversParentTy
 
 export type UserResolvers<ContextType = any, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = {
   avatarURL?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };

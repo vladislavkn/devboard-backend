@@ -4,7 +4,6 @@ export default gql`
   type User {
     avatarURL: String!
     name: String!
-    id: ID!
   }
 
   type Post {
@@ -23,7 +22,6 @@ export default gql`
     author: User!
     readableDate: String!
     body: String!
-    originalURL: String!
   }
 
   type Tag {
