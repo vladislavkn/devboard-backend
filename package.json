@@ -8,7 +8,7 @@
     "start:dev": "nodemon",
     "start": "node dist/index.js",
     "build": "tsc",
-    "postinstall": "nom run build",
+    "postinstall": "npm run build",
     "generate": "graphql-codegen --config codegen.yml"
   },
   "keywords": [],
