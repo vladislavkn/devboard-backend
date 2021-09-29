@@ -9,6 +9,19 @@ const resolvers: Resolvers<Context> = {
     postComments: (_, args, { dataSources }) => {
       return dataSources.commentsAPI.getCommentsByPostId(args.postId);
     },
+    lastPosts: (_, args, { dataSources }) => {
+      return dataSources.postsAPI.getLatestPosts(args.page, args.per_page);
+    },
+    taggedPosts: (_, args, { dataSources }) => {
+      return dataSources.postsAPI.getPostsByTags(
+        args.tags,
+        args.page,
+        args.per_page
+      );
+    },
+    currentPost: (_, args, { dataSources }) => {
+      return dataSources.postsAPI.getPostById(args.postId);
+    },
   },
 };
 

@@ -5,6 +5,7 @@ import resolvers from "./resolvers";
 import { DataSources } from "./types";
 import TagsAPI from "./dataSources/tags-api";
 import CommentsAPI from "./dataSources/comments-api";
+import PostsAPI from "./dataSources/posts-api";
 
 const server = new ApolloServer({
   typeDefs,
@@ -12,6 +13,7 @@ const server = new ApolloServer({
   dataSources: (): DataSources => ({
     tagsAPI: new TagsAPI(),
     commentsAPI: new CommentsAPI(),
+    postsAPI: new PostsAPI(),
   }),
 });
 

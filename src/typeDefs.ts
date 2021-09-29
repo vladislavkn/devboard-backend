@@ -15,7 +15,7 @@ export default gql`
     reactionsCount: Int!
     author: User!
     description: String!
-    body: String!
+    body: String
   }
 
   type Comment {
@@ -33,8 +33,8 @@ export default gql`
 
   type Query {
     tags(page: Int!, per_page: Int!): [Tag!]!
-    taggedPosts(tagIds: [ID!]!): [Post!]!
-    lastPosts: [Post!]!
+    taggedPosts(tags: [String!]!, page: Int!, per_page: Int!): [Post!]!
+    lastPosts(page: Int!, per_page: Int!): [Post!]!
     currentPost(postId: ID!): Post
     postComments(postId: ID!): [Comment!]
   }

@@ -23,7 +23,7 @@ export type Comment = {
 export type Post = {
   __typename?: 'Post';
   author: User;
-  body: Scalars['String'];
+  body?: Maybe<Scalars['String']>;
   commentsLink: Scalars['String'];
   description: Scalars['String'];
   id: Scalars['ID'];
@@ -48,13 +48,21 @@ export type QueryCurrentPostArgs = {
 };
 
 
+export type QueryLastPostsArgs = {
+  page: Scalars['Int'];
+  per_page: Scalars['Int'];
+};
+
+
 export type QueryPostCommentsArgs = {
   postId: Scalars['ID'];
 };
 
 
 export type QueryTaggedPostsArgs = {
-  tagIds: Array<Scalars['ID']>;
+  page: Scalars['Int'];
+  per_page: Scalars['Int'];
+  tags: Array<Scalars['String']>;
 };
 
 
@@ -179,7 +187,7 @@ export type CommentResolvers<ContextType = any, ParentType extends ResolversPare
 
 export type PostResolvers<ContextType = any, ParentType extends ResolversParentTypes['Post'] = ResolversParentTypes['Post']> = {
   author?: Resolver<ResolversTypes['User'], ParentType, ContextType>;
-  body?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  body?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   commentsLink?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   description?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
@@ -192,9 +200,9 @@ export type PostResolvers<ContextType = any, ParentType extends ResolversParentT
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   currentPost?: Resolver<Maybe<ResolversTypes['Post']>, ParentType, ContextType, RequireFields<QueryCurrentPostArgs, 'postId'>>;
-  lastPosts?: Resolver<Array<ResolversTypes['Post']>, ParentType, ContextType>;
+  lastPosts?: Resolver<Array<ResolversTypes['Post']>, ParentType, ContextType, RequireFields<QueryLastPostsArgs, 'page' | 'per_page'>>;
   postComments?: Resolver<Maybe<Array<ResolversTypes['Comment']>>, ParentType, ContextType, RequireFields<QueryPostCommentsArgs, 'postId'>>;
-  taggedPosts?: Resolver<Array<ResolversTypes['Post']>, ParentType, ContextType, RequireFields<QueryTaggedPostsArgs, 'tagIds'>>;
+  taggedPosts?: Resolver<Array<ResolversTypes['Post']>, ParentType, ContextType, RequireFields<QueryTaggedPostsArgs, 'page' | 'per_page' | 'tags'>>;
   tags?: Resolver<Array<ResolversTypes['Tag']>, ParentType, ContextType, RequireFields<QueryTagsArgs, 'page' | 'per_page'>>;
 };
 

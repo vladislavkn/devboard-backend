@@ -1,17 +1,28 @@
 import { RESTDataSource } from "apollo-datasource-rest";
-import { Comment, Tag } from "./generated/graphql-types";
+import { Comment, Post, Tag } from "./generated/graphql-types";
 
 export interface ITagsAPI extends RESTDataSource {
   getTags(page: number, per_page: number): Promise<Tag[]>;
 }
 
-export interface ICommentsApi extends RESTDataSource {
+export interface ICommentsAPI extends RESTDataSource {
   getCommentsByPostId(postId: string): Promise<Comment[]>;
+}
+
+export interface IPostsAPI extends RESTDataSource {
+  getLatestPosts(page: number, per_page: number): Promise<Post[]>;
+  getPostsByTags(
+    tags: string[],
+    page: number,
+    per_page: number
+  ): Promise<Post[]>;
+  getPostById(postId: string): Promise<Post | null>;
 }
 
 export type DataSources = {
   tagsAPI: ITagsAPI;
-  commentsAPI: ICommentsApi;
+  commentsAPI: ICommentsAPI;
+  postsAPI: IPostsAPI;
 };
 
 export type Context = {
@@ -35,4 +46,15 @@ export type CommentDTO = {
   body_html: string;
   id_code: string;
   user: UserDTO;
+};
+
+export type PostDTO = {
+  id: number;
+  title: string;
+  description: string;
+  readable_publish_date: string;
+  url: string;
+  public_reactions_count: number;
+  user: UserDTO;
+  body_html?: string;
 };

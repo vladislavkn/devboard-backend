@@ -5,11 +5,11 @@ import {
   getReadableDate,
 } from "../utils";
 import { RESTDataSource } from "apollo-datasource-rest";
-import { CommentDTO, ICommentsApi } from "@/types";
+import { CommentDTO, ICommentsAPI } from "@/types";
 
 export default class CommentsAPI
   extends RESTDataSource
-  implements ICommentsApi
+  implements ICommentsAPI
 {
   constructor() {
     super();
