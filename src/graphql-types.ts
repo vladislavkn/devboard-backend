@@ -60,7 +60,8 @@ export type QueryTaggedPostsArgs = {
 
 
 export type QueryTagsArgs = {
-  limit: Scalars['Int'];
+  page: Scalars['Int'];
+  per_page: Scalars['Int'];
 };
 
 export type Tag = {
@@ -197,7 +198,7 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
   lastPosts?: Resolver<Array<ResolversTypes['Post']>, ParentType, ContextType>;
   postComments?: Resolver<Maybe<Array<ResolversTypes['Comment']>>, ParentType, ContextType, RequireFields<QueryPostCommentsArgs, 'postId'>>;
   taggedPosts?: Resolver<Array<ResolversTypes['Post']>, ParentType, ContextType, RequireFields<QueryTaggedPostsArgs, 'tagIds'>>;
-  tags?: Resolver<Array<ResolversTypes['Tag']>, ParentType, ContextType, RequireFields<QueryTagsArgs, 'limit'>>;
+  tags?: Resolver<Array<ResolversTypes['Tag']>, ParentType, ContextType, RequireFields<QueryTagsArgs, 'page' | 'per_page'>>;
 };
 
 export type TagResolvers<ContextType = any, ParentType extends ResolversParentTypes['Tag'] = ResolversParentTypes['Tag']> = {

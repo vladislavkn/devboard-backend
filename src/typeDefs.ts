@@ -34,7 +34,7 @@ export default gql`
   }
 
   type Query {
-    tags(limit: Int!): [Tag!]!
+    tags(page: Int!, per_page: Int!): [Tag!]!
     taggedPosts(tagIds: [ID!]!): [Post!]!
     lastPosts: [Post!]!
     currentPost(postId: ID!): Post
