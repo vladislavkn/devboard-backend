@@ -1,4 +1,4 @@
-import { Comment } from "@/graphql-types";
+import { Comment } from "@/generated/graphql-types";
 import {
   getDocumentContentHTML,
   getEnvOrFail,

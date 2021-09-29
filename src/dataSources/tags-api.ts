@@ -1,4 +1,4 @@
-import { Tag } from "@/graphql-types";
+import { Tag } from "@/generated/graphql-types";
 import { getEnvOrFail } from "../utils";
 import { RESTDataSource } from "apollo-datasource-rest";
 import { ITagsAPI, TagDTO } from "@/types";

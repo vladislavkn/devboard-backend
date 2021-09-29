@@ -1,4 +1,4 @@
-import { Resolvers } from "./graphql-types";
+import { Resolvers } from "./generated/graphql-types";
 import { Context } from "./types";
 
 const resolvers: Resolvers<Context> = {

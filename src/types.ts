@@ -1,5 +1,5 @@
 import { RESTDataSource } from "apollo-datasource-rest";
-import { Comment, Tag } from "./graphql-types";
+import { Comment, Tag } from "./generated/graphql-types";
 
 export interface ITagsAPI extends RESTDataSource {
   getTags(page: number, per_page: number): Promise<Tag[]>;
