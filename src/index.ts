@@ -16,6 +16,7 @@ const server = new ApolloServer({
     commentsAPI: new CommentsAPI(),
     postsAPI: new PostsAPI(),
   }),
+  introspection: true,
 });
 
 server.listen({ port }).then(({ url }) => {
