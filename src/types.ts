@@ -37,8 +37,8 @@ export type UserDTO = {
 export type TagDTO = {
   id: number;
   name: string;
-  bg_color_hex: string;
-  text_color_hex: string;
+  bg_color_hex?: string;
+  text_color_hex?: string;
 };
 
 export type CommentDTO = {

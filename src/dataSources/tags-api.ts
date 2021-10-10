@@ -18,8 +18,8 @@ export default class TagsAPI extends RESTDataSource implements ITagsAPI {
     return data.map((tag) => ({
       id: tag.id.toString(),
       name: tag.name,
-      textColor: tag.text_color_hex,
-      backgroundColor: tag.bg_color_hex,
+      textColor: tag.text_color_hex ?? "white",
+      backgroundColor: tag.bg_color_hex ?? "black",
     }));
   }
 }
